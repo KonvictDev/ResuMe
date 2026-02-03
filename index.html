@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    
+    <title>ResuMe | Free Professional Resume Builder & CV Maker</title>
+    <meta name="description" content="Build professional, ATS-friendly resumes in minutes with ResuMe. Choose from modern, creative, and executive templates. No signup required for the best free online CV maker.">
+    <meta name="keywords" content="resume builder, free cv maker, professional resume templates, ATS friendly resume, online curriculum vitae, ResuMe app">
+    <meta name="author" content="ResuMe">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yourdomain.com/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/">
+    <meta property="og:title" content="ResuMe - Create Your Perfect Resume">
+    <meta property="og:description" content="Design professional resumes instantly with our free, drag-and-drop builder. Export to PDF and beat the ATS bots.">
+    <meta property="og:image" content="https://yourdomain.com/preview.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourdomain.com/">
+    <meta property="twitter:title" content="ResuMe - Free Online Resume Builder">
+    <meta property="twitter:description" content="Create professional resumes in minutes. ATS-optimized templates, real-time preview, and PDF export.">
+    <meta property="twitter:image" content="https://yourdomain.com/preview.jpg">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Oswald:wght@400;500;700&family=Roboto+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Poppins:wght@300;400;600;700&family=Lato:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "ResuMe",
+      "url": "https://yourdomain.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "A free, client-side resume builder offering ATS-friendly templates and instant PDF export.",
+      "featureList": "Drag and drop editor, ATS checker, PDF export, Real-time preview",
+      "screenshot": "https://yourdomain.com/screenshot.jpg"
+    }
+    </script>
+</head>
+<body class="bg-slate-100 font-sans text-slate-800">
+
+    <div id="view-templates" class="min-h-screen p-6 md:p-12 overflow-y-auto">
+        <div class="max-w-6xl mx-auto relative">
+            <div class="absolute top-0 right-0">
+                <button onclick="resetData()" aria-label="Reset all data" class="text-xs text-red-500 hover:text-red-700 font-bold border border-red-200 bg-red-50 px-3 py-1.5 rounded transition-colors flex items-center gap-1 shadow-sm">
+                    <i class="fa-solid fa-trash-arrow-up" aria-hidden="true"></i> Reset Data
+                </button>
+            </div>
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-indigo-600 rounded-lg text-white font-bold text-xl mb-4 shadow-lg shadow-indigo-200">RM</div>
+                <h1 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-3 tracking-tight">Choose Your Template</h1>
+                <p class="text-slate-500 text-lg">Select a design to start building your professional resume.</p>
+            </div>
+            
+            <div id="template-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pb-20">
+                </div>
+        </div>
+    </div>
+
+    <div id="view-onboarding" class="hidden min-h-screen p-6 md:p-12 overflow-y-auto animate-[fadeIn_0.3s_ease-out]">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center justify-between mb-10">
+                <button onclick="goBackToTemplates()" class="text-slate-500 hover:text-slate-800 font-bold flex items-center gap-2 text-sm transition-colors">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Templates
+                </button>
+                <div class="inline-flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-lg text-white font-bold text-lg shadow-md">RM</div>
+            </div>
+            
+            <div class="text-center mb-10">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-2 tracking-tight">Enter Your Details</h1>
+                <p class="text-slate-500 text-lg">Focus on the content. We'll handle the design in the next step.</p>
+            </div>
+
+            <div class="bg-indigo-50 border border-indigo-100 rounded-xl p-6 mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div>
+                    <h3 class="font-bold text-indigo-900">Auto-Fill Content</h3>
+                    <p class="text-sm text-indigo-700">Start with sample text for your role.</p>
+                </div>
+                <div class="flex gap-2 w-full md:w-auto">
+                    <select id="roleSelector" aria-label="Select role for auto-fill" class="bg-white border border-indigo-200 text-slate-700 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 outline-none cursor-pointer">
+                        <option value="" disabled selected>Select a Role...</option>
+                        <option value="software-engineer">Software Engineer</option>
+                        <option value="product-manager">Product Manager</option>
+                        <option value="marketing-specialist">Marketing Specialist</option>
+                        <option value="nurse">Nurse</option>
+                        <option value="student">Student / Intern</option>
+                    </select>
+                    <button onclick="applyRoleData()" class="bg-indigo-600 text-white text-sm font-bold px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors shadow-sm">Apply</button>
+                </div>
+            </div>
+
+            <div id="onboarding-form" class="space-y-8">
+                </div>
+
+            <div class="mt-12 pt-8 border-t border-slate-200 flex justify-end pb-20">
+                <button onclick="switchToEditor()" class="bg-slate-900 text-white text-lg font-bold px-8 py-4 rounded-xl shadow-xl hover:bg-slate-800 hover:scale-[1.02] transition-all flex items-center gap-3">
+                    Generate Resume <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-editor" class="hidden flex-col md:flex-row h-auto md:h-screen overflow-x-hidden md:overflow-hidden bg-slate-100 animate-[fadeIn_0.5s_ease-out]">
+        
+        <aside id="sidebar" class="w-full md:w-[480px] h-auto md:h-full border-r border-slate-200 shadow-xl relative flex flex-col shrink-0 order-1 bg-white z-20 transition-all duration-300">
+            <header class="px-4 py-3 bg-slate-900 border-b border-slate-700 flex justify-between items-center sticky top-0 z-50 shrink-0">
+                <div class="flex items-center gap-3">
+                    <button onclick="switchToOnboarding()" class="text-slate-400 hover:text-white transition-colors" title="Back to Form" aria-label="Back to Form"><i class="fa-solid fa-arrow-left"></i></button>
+                    <div class="flex items-center gap-2">
+                        <div class="w-7 h-7 bg-indigo-500 rounded text-white flex items-center justify-center font-bold text-xs shrink-0">RM</div>
+                        <div class="text-white font-bold text-sm tracking-wide">Editor</div>
+                    </div>
+                </div>
+                <div class="flex gap-2 items-center">
+                     <button onclick="copyAsText()" class="bg-slate-700 hover:bg-slate-600 text-white text-xs px-2 py-1.5 rounded font-bold transition-colors shadow-sm" title="Copy Plain Text">
+                        <i class="fa-solid fa-file-lines" aria-hidden="true"></i> <span class="hidden sm:inline">Txt</span>
+                    </button>
+                     <button onclick="toggleATSModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-2 py-1.5 rounded font-bold transition-colors shadow-sm" title="Check ATS Score">
+                        <i class="fa-solid fa-check-double mr-1" aria-hidden="true"></i> ATS
+                    </button>
+                    <button onclick="toggleSidebar()" class="text-slate-400 hover:text-white transition-colors ml-2" title="Hide Editor (Full Screen)" aria-label="Toggle Sidebar">
+                        <i class="fa-solid fa-angles-left" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="px-4 py-2 bg-white border-b border-slate-200 flex justify-between items-center text-xs shrink-0 overflow-x-auto">
+                <div class="flex gap-2 items-center shrink-0">
+                    <span class="font-bold text-slate-500 hidden sm:inline">SECTIONS</span>
+                    <button onclick="undo()" class="text-slate-400 hover:text-slate-700 ml-0 sm:ml-2" title="Undo" aria-label="Undo"><i class="fa-solid fa-rotate-left"></i></button>
+                    <button onclick="redo()" class="text-slate-400 hover:text-slate-700" title="Redo" aria-label="Redo"><i class="fa-solid fa-rotate-right"></i></button>
+                </div>
+                <div class="flex gap-3 shrink-0 ml-4">
+                    <button onclick="addCustomSection()" class="text-indigo-600 hover:text-indigo-800 font-bold"><i class="fa-solid fa-plus-circle" aria-hidden="true"></i> Custom</button>
+                </div>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-4 scroll-smooth bg-slate-50 max-h-[60vh] md:max-h-none" id="editor-accordion">
+                </div>
+
+            <div class="p-4 bg-white border-t border-slate-200 shadow-[0_-5px_15px_rgba(0,0,0,0.05)] z-20 shrink-0">
+                <div class="grid grid-cols-2 gap-3 mb-3">
+                    <div class="col-span-2 flex flex-col sm:flex-row gap-3 bg-slate-50 p-2 rounded border border-slate-200">
+                         <div class="w-full sm:w-1/3 flex flex-col justify-center border-b sm:border-b-0 sm:border-r border-slate-200 pb-2 sm:pb-0 sm:pr-2 mb-2 sm:mb-0">
+                            <label class="input-label mb-1" for="fontSelect">Font</label>
+                            <select id="fontSelect" onchange="updateStyle('font', this.value)" class="w-full text-xs bg-white border border-slate-300 rounded px-2 py-1 outline-none">
+                                <optgroup label="Sans Serif">
+                                    <option value="'Inter', sans-serif">Inter</option>
+                                    <option value="'Open Sans', sans-serif">Open Sans</option>
+                                    <option value="'Montserrat', sans-serif">Montserrat</option>
+                                    <option value="'Lato', sans-serif">Lato</option>
+                                    <option value="'Roboto', sans-serif">Roboto</option>
+                                </optgroup>
+                                <optgroup label="Serif">
+                                    <option value="'Merriweather', serif">Merriweather</option>
+                                    <option value="'Playfair Display', serif">Playfair</option>
+                                    <option value="'Lora', serif">Lora</option>
+                                    <option value="'Roboto Slab', serif">Roboto Slab</option>
+                                </optgroup>
+                                <optgroup label="Monospace">
+                                    <option value="'JetBrains Mono', monospace">JetBrains</option>
+                                    <option value="'Roboto Mono', monospace">Roboto Mono</option>
+                                </optgroup>
+                            </select>
+                         </div>
+                         <div class="flex-1 grid grid-cols-2 gap-2">
+                            <div>
+                                <label class="input-label flex justify-between mb-1"><span>Size</span> <span id="lbl-scale" class="text-indigo-600">1.0</span></label>
+                                <input aria-label="Font Size" type="range" min="0.85" max="1.15" step="0.05" value="1" oninput="updateStyle('scale', this.value)" class="w-full h-1 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                            </div>
+                            <div>
+                                <label class="input-label flex justify-between mb-1"><span>Space</span> <span id="lbl-space" class="text-indigo-600">1.4</span></label>
+                                <input aria-label="Line Spacing" type="range" min="1.0" max="1.8" step="0.1" value="1.4" oninput="updateStyle('spacing', this.value)" class="w-full h-1 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+                            </div>
+                         </div>
+                    </div>
+
+                    <div>
+                        <label class="input-label block mb-1" for="templateSelect">Template</label>
+                        <select id="templateSelect" onchange="changeTemplate(this.value)" class="w-full text-xs font-semibold p-2 rounded border border-slate-300 bg-slate-50 outline-none focus:border-indigo-500 cursor-pointer">
+                            <optgroup label="Professional">
+                                <option value="modern">Modern</option>
+                                <option value="classic">Classic</option>
+                                <option value="minimalist">Minimalist</option>
+                                <option value="timeline">Timeline</option>
+                                <option value="compact">Compact</option>
+                                <option value="technical">Technical</option>
+                                <option value="academic">Academic</option>
+                            </optgroup>
+                            <optgroup label="Creative & Visual">
+                                <option value="darkside">Dark Sidebar</option>
+                                <option value="banner">Banner</option>
+                                <option value="creative">Creative</option>
+                                <option value="corporate">Corporate</option>
+                                <option value="elegant">Elegant</option>
+                            </optgroup>
+                            <optgroup label="Modern & Clean">
+                                <option value="executive">Executive</option>
+                                <option value="nordic">Nordic</option>
+                                <option value="berkeley">Berkeley</option>
+                                <option value="polished">Polished</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    
+                    <div class="flex flex-col gap-2">
+                        <div>
+                            <label class="input-label block mb-1">Accent</label>
+                            <div class="flex items-center gap-2 h-[34px] px-2 bg-slate-50 rounded border border-slate-300 relative overflow-hidden cursor-pointer hover:bg-slate-100">
+                                <div class="w-4 h-4 rounded-full border border-slate-200 shadow-sm" id="colorPreview" style="background: #4f46e5;"></div>
+                                <span class="text-xs font-mono text-slate-500 flex-1 truncate" id="colorLabel">#4f46e5</span>
+                                <input type="color" id="themeColor" oninput="setTheme(this.value)" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" aria-label="Select accent color">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-span-2 flex items-center justify-between px-2">
+                        <span class="input-label">Paper: <span id="paperLabel" class="text-indigo-600">A4</span></span>
+                        <button onclick="togglePaperSize()" class="text-xs bg-slate-200 px-3 py-1 rounded hover:bg-slate-300 font-bold text-slate-600">
+                            <i class="fa-solid fa-arrows-left-right-to-line" aria-hidden="true"></i> Switch
+                        </button>
+                     </div>
+                </div>
+                <button onclick="downloadPDF()" class="w-full bg-slate-800 text-white py-3 rounded-lg text-sm font-bold hover:bg-slate-700 transition-colors flex items-center justify-center gap-2 shadow-lg active:scale-[0.99]">
+                    <i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Download PDF
+                </button>
+            </div>
+        </aside>
+
+        <main class="flex-1 preview-area overflow-y-auto p-4 md:p-8 flex justify-center items-start relative bg-slate-200/50 order-2 md:order-2 w-full md:w-auto min-h-[500px]">
+            <button id="show-sidebar-btn" onclick="toggleSidebar()" class="hidden absolute top-6 left-6 z-30 bg-white hover:bg-slate-50 text-indigo-600 hover:text-indigo-800 px-4 py-2.5 rounded-full shadow-lg border border-slate-200 font-bold text-sm transition-all flex items-center gap-2 animate-[fadeIn_0.3s_ease-out]">
+                <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i> Show Editor
+            </button>
+
+            <div id="canvas-wrapper" class="origin-top transform transition-transform duration-200">
+                <div id="resume-canvas" class="a4-page transition-all duration-200 ease-out shadow-2xl">
+                    </div>
+            </div>
+            <div id="overflow-warning" class="overflow-warning">
+                <i class="fa-solid fa-circle-info mr-1" aria-hidden="true"></i> Page 2
+            </div>
+        </main>
+    </div>
+    
+    <canvas id="imgCanvas" style="display:none;"></canvas>
+
+    <div id="atsModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden flex items-center justify-center transition-opacity px-4">
+        <div class="bg-white w-full max-w-[500px] rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-[fadeIn_0.2s_ease-out]">
+            <div class="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+                <h3 class="font-bold text-slate-800 flex items-center gap-2"><i class="fa-solid fa-robot text-indigo-600" aria-hidden="true"></i> ATS Optimizer</h3>
+                <button onclick="toggleATSModal()" class="w-6 h-6 rounded-full hover:bg-slate-200 flex items-center justify-center text-slate-500" aria-label="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-5 flex-1 overflow-y-auto">
+                <label for="jobDescription" class="text-xs font-bold text-slate-700 uppercase mb-2 block">Job Description</label>
+                <textarea id="jobDescription" class="w-full h-32 p-3 border border-slate-200 rounded-lg text-xs bg-slate-50 focus:bg-white focus:border-indigo-500 outline-none resize-none mb-5" placeholder="Paste the full job description here..."></textarea>
+                <div id="atsResults" class="hidden border-t border-slate-100 pt-5">
+                    <div class="flex items-center gap-4 mb-5">
+                        <div class="relative w-16 h-16 shrink-0">
+                            <svg class="w-full h-full transform -rotate-90" aria-hidden="true">
+                                <circle cx="32" cy="32" r="28" stroke="#e2e8f0" stroke-width="6" fill="transparent"/>
+                                <circle id="scoreCircle" cx="32" cy="32" r="28" stroke="#4f46e5" stroke-width="6" fill="transparent" stroke-dasharray="175.9" stroke-dashoffset="175.9" class="transition-all duration-1000"/>
+                            </svg>
+                            <div class="absolute inset-0 flex items-center justify-center font-bold text-lg text-slate-700" id="atsScore">0%</div>
+                        </div>
+                        <div>
+                            <div class="text-sm font-bold text-slate-800">Match Score</div>
+                            <div class="text-xs text-slate-500">Based on keyword frequency</div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div><div class="text-xs font-bold text-emerald-600 mb-1.5 flex items-center gap-1"><i class="fa-solid fa-check" aria-hidden="true"></i> Matched Keywords</div><div id="matchedKeywords" class="flex flex-wrap gap-1.5"></div></div>
+                        <div><div class="text-xs font-bold text-red-500 mb-1.5 flex items-center gap-1"><i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i> Missing Keywords</div><div id="missingKeywords" class="flex flex-wrap gap-1.5"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 border-t border-slate-200 bg-slate-50 flex justify-end">
+                <button onclick="analyzeATS()" class="bg-indigo-600 text-white px-5 py-2 rounded-lg text-xs font-bold hover:bg-indigo-700 transition-colors shadow-sm w-full sm:w-auto">Analyze Resume</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="writerModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[100] hidden flex items-center justify-center px-4">
+        <div class="bg-white w-full max-w-[600px] rounded-xl shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
+            <div class="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
+                <h3 class="font-bold text-slate-800 flex items-center gap-2"><i class="fa-solid fa-wand-magic-sparkles text-purple-600" aria-hidden="true"></i> Content Helper</h3>
+                <button onclick="toggleWriterModal()" class="w-6 h-6 rounded-full hover:bg-slate-200 flex items-center justify-center text-slate-500" aria-label="Close Modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="p-4 bg-slate-100 border-b border-slate-200 flex gap-2">
+                <button onclick="switchHelperTab('verbs')" id="tab-verbs" class="px-3 py-1 text-xs font-bold rounded bg-white text-purple-600 shadow-sm flex-1">Action Verbs</button>
+                <button onclick="switchHelperTab('templates')" id="tab-templates" class="px-3 py-1 text-xs font-bold rounded hover:bg-white text-slate-500 flex-1">Result Templates</button>
+                <button onclick="switchHelperTab('skills')" id="tab-skills" class="px-3 py-1 text-xs font-bold rounded hover:bg-white text-slate-500 flex-1">Skills</button>
+            </div>
+            <div class="p-5 flex-1 overflow-y-auto" id="helper-content">
+            </div>
+            <div class="p-3 bg-slate-50 text-xs text-center text-slate-400 border-t border-slate-200">
+                Tap any item to insert
+            </div>
+        </div>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
